@@ -1,0 +1,40 @@
+name: Deploy Sub-Project to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+    paths:
+      - '{{ project_path }}/**'
+  workflow_dispatch:
+    inputs:
+      project_path:
+        description: 'Path to the project to deploy (e.g., first web development code)'
+        required: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}/${{ github.event.inputs.project_path || format('{0}', github.event.repository.name) }}/${{ github.event.inputs.project_path || 'default_project_name'}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './${{ github.event.inputs.project_path || github.workflow_data.project_path_for_push }}' # Dynamically set path
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
