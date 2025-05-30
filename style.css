@@ -1,4 +1,67 @@
-body{
-    background-color: red;
-    color: blueviolet;
+/* filepath: /workspaces/My-Wed-development-journey/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #35424a;
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+    overflow: auto; /* Clear floats */
+}
+
+#intro, #features {
+    background: #ffffff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#features ul {
+    list-style: none;
+    padding: 0;
+}
+
+#features ul li {
+    padding: 5px 0;
+    border-bottom: 1px #eee dotted;
+}
+
+#features ul li:last-child {
+    border-bottom: none;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #35424a;
+    color: #ffffff;
+    position: relative; /* Changed from fixed to relative for better flow */
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media(max-width: 768px){
+    header h1 {
+        font-size: 1.5rem;
+    }
+    main {
+        padding: 10px;
+    }
 }
