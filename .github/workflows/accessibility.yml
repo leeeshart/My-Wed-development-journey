@@ -1,0 +1,25 @@
+name: Accessibility Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install pa11y
+        run: npm install -g pa11y
+      - name: Run pa11y on main page
+        run: |
+          npx serve -s . &
+          sleep 5
+          pa11y http://localhost:5000/index.html

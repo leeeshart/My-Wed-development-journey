@@ -1,67 +1,121 @@
 /* filepath: /workspaces/My-Wed-development-journey/style.css */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a2e; /* Deep space blue */
+  color: #e0e0e0; /* Light grey for text */
+  line-height: 1.6;
 }
 
 header {
-    background-color: #35424a;
-    color: #ffffff;
-    padding: 1rem 0;
-    text-align: center;
+  background-color: #162447; /* Darker blue for header */
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 3px solid #e0e0e0;
 }
 
 header h1 {
-    margin: 0;
+  margin: 0;
+  font-size: 2.8em;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-main {
-    padding: 20px;
-    overflow: auto; /* Clear floats */
+header p {
+  font-size: 1.2em;
+  margin-top: 0.5rem;
 }
 
-#intro, #features {
-    background: #ffffff;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+#odyssey-map {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1.5rem; /* Space between cards */
 }
 
-#features ul {
-    list-style: none;
-    padding: 0;
+.milestone-card {
+  background-color: #1f4068; /* Rich blue for cards */
+  border: 1px solid #162447; /* Border matching header */
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 300px; /* Fixed width for cards */
+  box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes link to bottom */
 }
 
-#features ul li {
-    padding: 5px 0;
-    border-bottom: 1px #eee dotted;
+.milestone-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 25px rgb(255 255 255 / 10%);
 }
 
-#features ul li:last-child {
-    border-bottom: none;
+.milestone-card h2 {
+  color: #e0f7fa; /* Light cyan for card titles */
+  margin-top: 0;
+  font-size: 1.8em;
+  border-bottom: 2px solid #e0f7fa;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.milestone-card p {
+  font-size: 1em;
+  flex-grow: 1; /* Allows paragraph to take available space */
+  margin-bottom: 1rem;
+}
+
+.milestone-card a {
+  background-color: #e0f7fa; /* Light cyan for buttons */
+  color: #162447; /* Dark blue text on buttons */
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  display: block; /* Make link take full width of its container */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.milestone-card a:hover {
+  background-color: #b3e5fc; /* Lighter cyan on hover */
+  color: #101a35;
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #35424a;
-    color: #ffffff;
-    position: relative; /* Changed from fixed to relative for better flow */
-    bottom: 0;
-    width: 100%;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #162447; /* Matching header */
+  color: #fff;
+  margin-top: 2rem;
+  border-top: 3px solid #e0e0e0;
 }
 
 /* Responsive Design */
-@media(max-width: 768px){
-    header h1 {
-        font-size: 1.5rem;
-    }
-    main {
-        padding: 10px;
-    }
+@media (width <= 768px) {
+  header h1 {
+    font-size: 2.2em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
+  .milestone-card {
+    width: calc(50% - 2rem); /* Two cards per row on medium screens */
+  }
+}
+
+@media (width <= 480px) {
+  .milestone-card {
+    width: calc(100% - 2rem); /* One card per row on small screens */
+  }
 }
